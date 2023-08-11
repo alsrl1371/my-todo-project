@@ -1,0 +1,5 @@
+* text=auto
+
+# 유형별 설정 예시
+*.js text eol=lf
+*.css text eol=lf
