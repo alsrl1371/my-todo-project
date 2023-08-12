@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Todo {
   id: string;
@@ -18,7 +19,7 @@ export default function AddTodo({ onAdd }: AddTodoProps) {
     if (text.trim().length === 0) {
       return;
     }
-    onAdd({ id: '고유한값', text, status: 'active' });
+    onAdd({ id: uuidv4(), text, status: 'active' });
     setText('');
   };
   return (
