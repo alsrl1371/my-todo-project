@@ -1,27 +1,35 @@
 import { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
-import { TodoItem } from '@/common/types/TodoTypes';
+import { TodoItem, filterProps } from '@/common/types/TodoTypes';
 
 const initialTodos: TodoItem[] = [
   { id: '123', text: '장보기', status: 'active' },
   { id: '124', text: '공부하기', status: 'active' },
 ];
-export default function TodoList() {
+export default function TodoList({ filter }: filterProps) {
   const [todos, setTodos] = useState<TodoItem[]>(initialTodos);
   const handleAdd = (todo: TodoItem) => setTodos([...todos, todo]);
   const handleUpdate = (updated: TodoItem) =>
     setTodos(todos.map((t) => (t.id === updated.id ? updated : t)));
   const handleDelete = (deleted: TodoItem) => setTodos(todos.filter((t) => t.id !== deleted.id));
 
+  const filtered = getFilteredItems(todos, filter);
   return (
     <section>
       <ul>
-        {todos.map((item) => (
+        {filtered.map((item) => (
           <Todo key={item.id} todo={item} onUpdate={handleUpdate} onDelete={handleDelete} />
         ))}
       </ul>
       <AddTodo onAdd={handleAdd} />
     </section>
   );
+}
+
+function getFilteredItems(todos: TodoItem[], filter: string) {
+  if (filter === 'all') {
+    return todos;
+  }
+  return todos.filter((todo) => todo.status === filter);
 }
