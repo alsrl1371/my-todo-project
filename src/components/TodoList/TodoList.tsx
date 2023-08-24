@@ -16,8 +16,8 @@ export default function TodoList({ filter }: filterProps) {
 
   const filtered = getFilteredItems(todos, filter);
   return (
-    <section className='flex flex-col justify-between h-full bg-whitemode'>
-      <ul className='h-full border-b-2 border-gray-200 px-20pxr py-20pxr'>
+    <section className='flex flex-col h-full min-h-0 bg-whitemode'>
+      <ul className='flex-grow overflow-y-auto border-b-2 border-gray-200 p-15pxr'>
         {filtered.map((item) => (
           <Todo key={item.id} todo={item} onUpdate={handleUpdate} onDelete={handleDelete} />
         ))}

@@ -9,15 +9,21 @@ export default function Todo({ todo, onUpdate, onDelete }: TodoProps) {
   };
   const handleDelete = () => onDelete(todo);
   return (
-    <li>
+    <li className='flex items-center justify-between m-10pxr text-text'>
       <input
+        className='w-20pxr h-20pxr'
         type='checkbox'
         id='checkbox'
         checked={status === 'completed'}
         onChange={handleChange}
       />
-      <label htmlFor='checkbox'>{text}</label>
-      <button onClick={handleDelete}>
+      <label className='flex-1 ml-10pxr' htmlFor='checkbox'>
+        {text}
+      </label>
+      <button
+        className='flex items-center justify-center transition-all bg-gray-300 p-5pxr rounded-xl w-26pxr h-26pxr hover:bg-accent'
+        onClick={handleDelete}
+      >
         <FaTrashAlt />
       </button>
     </li>
