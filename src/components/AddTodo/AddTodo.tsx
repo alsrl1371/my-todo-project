@@ -31,7 +31,10 @@ export default function AddTodo({ onAdd }: AddTodoProps) {
         value={text}
         onChange={handleChange}
       ></input>
-      <button className='text-xl rounded-lg m-10pxr bg-accent text-darkmode p-7pxr' type='submit'>
+      <button
+        className='text-xl rounded-lg m-10pxr bg-accent text-darkmode px-15pxr py-7pxr'
+        type='submit'
+      >
         Add
       </button>
     </form>
