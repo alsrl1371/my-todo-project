@@ -1,3 +1,4 @@
+import { useDarkModeContext } from '../../context/DarkModeContext';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -13,6 +14,7 @@ interface AddTodoProps {
 
 export default function AddTodo({ onAdd }: AddTodoProps) {
   const [text, setText] = useState('');
+  const { darkMode } = useDarkModeContext();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +25,12 @@ export default function AddTodo({ onAdd }: AddTodoProps) {
     setText('');
   };
   return (
-    <form className='flex items-center justify-center bg-darkmode' onSubmit={handleSubmit}>
+    <form
+      className={`flex items-center justify-center bg-darkmode ${
+        darkMode ? 'bg-navy-800' : 'bg-darkmode'
+      }`}
+      onSubmit={handleSubmit}
+    >
       <input
         className='w-full border-2 border-gray-200 rounded-lg my-10pxr ml-10pxr p-5pxr'
         type='text'

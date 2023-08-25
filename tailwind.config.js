@@ -39,6 +39,10 @@ export default {
           200: '#E6CF00',
           300: '#381E1E',
         },
+        navy: {
+          700: '#22243b',
+          800: '#1a1c35',
+        },
         cherry: '#FF5E5E',
         darkmode: '#f5f5f5',
         whitemode: '#fdfffd',
