@@ -5,11 +5,13 @@ export interface TodoItem {
 }
 
 export interface TodoProps {
+  dark: boolean;
   todo: TodoItem;
   onUpdate: (updated: TodoItem) => void;
   onDelete: (deleted: TodoItem) => void;
 }
 
 export interface filterProps {
+  dark: boolean;
   filter: string;
 }

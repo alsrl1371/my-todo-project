@@ -1,9 +1,7 @@
 import { TodoProps } from '@/common/types/TodoTypes';
-import { useDarkModeContext } from '../../context/DarkModeContext';
 import { FaTrashAlt } from 'react-icons/fa';
 
-export default function Todo({ todo, onUpdate, onDelete }: TodoProps) {
-  const { darkMode } = useDarkModeContext();
+export default function Todo({ dark, todo, onUpdate, onDelete }: TodoProps) {
   const { text, status } = todo;
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const status = e.target.checked ? 'completed' : 'active';
@@ -13,7 +11,7 @@ export default function Todo({ todo, onUpdate, onDelete }: TodoProps) {
   return (
     <li
       className={`flex items-center justify-between m-10pxr ${
-        darkMode ? 'text-gray-200' : 'text-text'
+        dark ? 'text-gray-200' : 'text-text'
       }`}
     >
       <input
@@ -28,7 +26,7 @@ export default function Todo({ todo, onUpdate, onDelete }: TodoProps) {
       </label>
       <button
         className={`flex items-center justify-center transition-all bg-gray-300 p-5pxr rounded-xl w-26pxr h-26pxr hover:bg-accent ${
-          darkMode ? 'bg-gray-800' : 'bg-gray-300'
+          dark ? 'bg-gray-800' : 'bg-gray-300'
         }`}
         onClick={handleDelete}
       >
