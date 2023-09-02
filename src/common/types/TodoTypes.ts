@@ -9,3 +9,7 @@ export interface TodoProps {
   onUpdate: (updated: TodoItem) => void;
   onDelete: (deleted: TodoItem) => void;
 }
+
+export interface filterProps {
+  filter: string;
+}
